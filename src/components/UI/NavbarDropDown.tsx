@@ -1,15 +1,24 @@
 "use client";
 
+import { useUser } from "@/src/context/user.provider";
+import { logout } from "@/src/services/AuthService";
 import { Avatar } from "@heroui/avatar";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownTrigger,
+  DropdownTrigger,N
 } from "@heroui/dropdown";
 import Link from "next/link";
 
 export default function NavbarDropDown() {
+
+  const { user, setIsLoading: userLoading } = useUser();
+
+  const handleLogout = () => {
+    logout();
+    userLoading(true);
+  };
   return (
     <Dropdown>
       <DropdownTrigger>
@@ -36,7 +45,7 @@ export default function NavbarDropDown() {
         <DropdownItem as={Link} href="/profile/settings" key="settings">
           Settings
         </DropdownItem>
-        <DropdownItem key="logout" className="text-red-500">
+        <DropdownItem  onClick={() => handleLogout()} key="logout" className="text-red-500">
             Logout
         </DropdownItem>
       </DropdownMenu>
