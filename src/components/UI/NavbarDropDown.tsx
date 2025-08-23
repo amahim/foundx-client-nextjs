@@ -7,7 +7,7 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownTrigger,N
+  DropdownTrigger,
 } from "@heroui/dropdown";
 import Link from "next/link";
 
@@ -22,7 +22,7 @@ export default function NavbarDropDown() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Avatar name="Ron" className="cursor-pointer" />
+         <Avatar className="cursor-pointer" src={user?.profilePhoto} />
       </DropdownTrigger>
 
       <DropdownMenu aria-label="Profile Menu">
